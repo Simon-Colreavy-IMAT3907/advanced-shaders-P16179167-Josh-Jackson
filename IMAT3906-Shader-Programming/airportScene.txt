@@ -1,0 +1,191 @@
+f grassTile ./Models/grass_tile.obj
+f grassTileTex ./Textures/grass_tile.bmp
+
+f runwayTile ./Models/runway_tile.obj
+f runwayTileTex ./Textures/runway_tile.bmp
+
+f airstripTile ./Models/airstrip_tile.obj
+f airstripTileTex ./Textures/airstrip_tile.bmp
+
+f carparkTile ./Models/carpark_tile.obj
+f carparkTileTex ./Textures/carpark_tile.bmp
+
+f hangarWithDoors ./Models/Hangar_withDoors.obj
+f hangarWithDoorsTex ./Textures/Hangar_withDoors.bmp
+f hangarWithoutDoors ./Models/Hangar_withoutDoors.obj
+f hangarWithoutDoorsTex ./Textures/Hangar_withoutDoors.bmp
+
+f storageBuilding ./Models/small_storage_buildings.obj
+f storageBuildingTex ./Textures/small_storage_buildings.bmp
+
+f bus ./Models/bus.obj
+f busTex ./Textures/bus.bmp
+
+f car ./Models/red_car.obj
+f redTex ./Textures/red_car.bmp
+f blueTex ./Textures/blue_car.bmp
+f greenTex ./Textures/green_car.bmp
+
+f entranceBuilding ./Models/Entrance_Building.obj
+f entranceBuildingTex ./Textures/Entrance_Building.bmp
+
+f controlBuilding ./Models/Control_Building.obj
+f controlBuildingTex ./Textures/Control_Building.bmp
+
+f controlTower ./Models/Control_Tower_Building.obj
+f controlTowerTex ./Textures/Control_Tower_Building.bmp
+
+f cafeArea ./Models/Cafe_Area.obj
+f cafeAreaTex ./Textures/Cafe_Area.bmp
+
+f cessna ./Models/Cessna.obj
+f cessnaTex ./Textures/Cessna.bmp
+
+f boeing ./Models/boeing.obj
+f boeingTex ./Textures/boeing.bmp
+
+
+m grassTile 0/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 126/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 252/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 378/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 504/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 630/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 756/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 882/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 1008/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 1134/-1/0 1/1/1 0/0/0 grassTileTex
+m grassTile 1260/-1/0 1/1/1 0/0/0 grassTileTex
+
+
+m grassTile 0/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 126/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 252/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 378/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 504/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 630/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 756/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 882/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 1008/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 1134/-1/252 1/1/1 0/0/0 grassTileTex
+m grassTile 1260/-1/252 1/1/1 0/0/0 grassTileTex
+
+
+m grassTile 0/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 126/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 252/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 378/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 504/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 630/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 756/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 882/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 1008/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 1134/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 1260/-1/378 1/1/1 0/0/0 grassTileTex
+m grassTile 378/-1/504 1/1/1 0/0/0 grassTileTex
+m grassTile 504/-1/504 1/1/1 0/0/0 grassTileTex
+m grassTile 630/-1/504 1/1/1 0/0/0 grassTileTex
+m grassTile 756/-1/504 1/1/1 0/0/0 grassTileTex
+m grassTile 882/-1/504 1/1/1 0/0/0 grassTileTex
+m grassTile 1008/-1/504 1/1/1 0/0/0 grassTileTex
+m grassTile 1008/-1/630 1/1/1 0/0/0 grassTileTex
+m grassTile 1008/-1/756 1/1/1 0/0/0 grassTileTex
+
+m runwayTile 0/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 126/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 252/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 378/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 504/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 630/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 756/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 882/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 1008/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 1134/-1/126 1/1/1 0/90/0 runwayTileTex
+m runwayTile 1260/-1/126 1/1/1 0/90/0 runwayTileTex
+
+
+m airstripTile 0/-1/504 1/1/1 0/0/0 airstripTileTex
+m airstripTile 126/-1/504 1/1/1 0/0/0 airstripTileTex
+m airstripTile 126/-1/630 1/1/1 0/0/0 airstripTileTex
+m airstripTile 126/-1/756 1/1/1 0/0/0 airstripTileTex
+m airstripTile 252/-1/504 1/1/1 0/0/0 airstripTileTex
+m airstripTile 252/-1/630 1/1/1 0/0/0 airstripTileTex
+m airstripTile 252/-1/756 1/1/1 0/0/0 airstripTileTex
+m airstripTile 378/-1/630 1/1/1 0/0/0 airstripTileTex
+m airstripTile 378/-1/756 1/1/1 0/0/0 airstripTileTex
+m airstripTile 504/-1/630 1/1/1 0/0/0 airstripTileTex
+m airstripTile 504/-1/756 1/1/1 0/0/0 airstripTileTex
+m airstripTile 630/-1/630 1/1/1 0/0/0 airstripTileTex
+m airstripTile 630/-1/756 1/1/1 0/0/0 airstripTileTex
+m airstripTile 756/-1/630 1/1/1 0/0/0 airstripTileTex
+m airstripTile 756/-1/756 1/1/1 0/0/0 airstripTileTex
+m airstripTile 882/-1/630 1/1/1 0/0/0 airstripTileTex
+m airstripTile 882/-1/756 1/1/1 0/0/0 airstripTileTex
+
+m carparkTile 0/-1/630 1/1/1 0/90/0 carparkTileTex
+m carparkTile 0/-1/756 1/1/1 0/90/0 carparkTileTex
+
+m car 40/0/600 0.4/0.4/0.4 0/0/0 redTex
+m car 40/0/630 0.4/0.4/0.4 0/0/0 redTex
+m car 40/0/690 0.4/0.4/0.4 0/0/0 greenTex
+m car -40/0/780 0.4/0.4/0.4 0/180/0 blueTex
+
+m carparkTile 1134/-1/504 1/1/1 0/90/0 carparkTileTex
+m carparkTile 1134/-1/630 1/1/1 0/90/0 carparkTileTex
+m carparkTile 1134/-1/756 1/1/1 0/90/0 carparkTileTex
+
+m carparkTile 1260/-1/504 1/1/1 0/90/0 carparkTileTex
+m carparkTile 1260/-1/630 1/1/1 0/90/0 carparkTileTex
+m carparkTile 1260/-1/756 1/1/1 0/90/0 carparkTileTex
+
+m car 1300/0/474 0.4/0.4/0.4 0/0/0 redTex
+m car 1300/0/504 0.4/0.4/0.4 0/0/0 redTex
+m car 1290/0/534 0.4/0.4/0.4 0/0/0 blueTex
+m car 1300/0/564 0.4/0.4/0.4 0/0/0 greenTex
+m car 1300/0/654 0.4/0.4/0.4 0/0/0 blueTex
+m car 1295/0/684 0.4/0.4/0.4 0/0/0 redTex
+m car 1300/0/784 0.4/0.4/0.4 0/0/0 greenTex
+
+m car 1210/0/474 0.4/0.4/0.4 0/0/0 blueTex
+m car 1210/0/534 0.4/0.4/0.4 0/180/0 blueTex
+m car 1220/0/564 0.4/0.4/0.4 0/0/0 greenTex
+m car 1210/0/654 0.4/0.4/0.4 0/180/0 greenTex
+m car 1210/0/784 0.4/0.4/0.4 0/0/0 blueTex
+
+m car 1095/0/474 0.4/0.4/0.4 0/180/0 redTex
+m car 1095/0/504 0.4/0.4/0.4 0/180/0 redTex
+m car 1095/0/534 0.4/0.4/0.4 0/0/0 redTex
+m car 1095/0/564 0.4/0.4/0.4 0/180/0 greenTex
+m car 1095/0/594 0.4/0.4/0.4 0/180/0 blueTex
+m car 1095/0/624 0.4/0.4/0.4 0/180/0 redTex
+m car 1095/0/654 0.4/0.4/0.4 0/0/0 greenTex
+m car 1095/0/784 0.4/0.4/0.4 0/180/0 greenTex
+
+m hangarWithDoors 126/0/721 1/1/1 0/0/0 hangarWithDoorsTex
+m hangarWithoutDoors 126/0/595 1/1/1 0/0/0 hangarWithoutDoorsTex
+
+m storageBuilding 0/0/504 1/1/1 0/80/0 storageBuildingTex
+
+m bus 126/0/524 0.4/0.4/0.4 0/40/0 busTex
+m bus 126/0/474 0.4/0.4/0.4 0/-60/0 busTex
+
+m entranceBuilding 378/0/781 0.9/0.9/0.9 0/180/0 entranceBuildingTex
+m entranceBuilding 896/0/746 1/1/1 0/45/0 entranceBuildingTex
+
+m controlBuilding 524/0/781 1/1/1 0/180/0 controlBuildingTex
+
+m controlTower 770/0/761 1/1/1 0/180/0 controlTowerTex
+
+m cafeArea 617/0/761 1/1/1 0/180/0 cafeAreaTex
+
+m cessna 504/-9/630 1.2/1.2/1.2 0/0/0 cessnaTex
+
+m cessna 756/-9/378 1.2/1.2/1.2 0/52/0 cessnaTex
+
+m cessna 126/-5/126 1.2/1.2/1.2 0/180/5 cessnaTex
+
+m cessna 126/-9/725 1.2/1.2/1.2 0/180/0 cessnaTex
+
+m cessna 252/-9/550 1.2/1.2/1.2 0/112/0 cessnaTex
+
+m boeing 630/180/126 1/1/1 0/270/0 boeingTex

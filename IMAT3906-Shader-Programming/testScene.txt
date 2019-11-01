@@ -1,0 +1,4 @@
+f stoneWall ./Models/Cube_obj.obj
+f stoneWallTexture ./Textures/Cube_diffuse.bmp
+
+m stoneWall 0/-1/0 1/1/1 0/0/0 stoneWallTexture

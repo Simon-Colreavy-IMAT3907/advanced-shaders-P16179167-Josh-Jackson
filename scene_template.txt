@@ -1,0 +1,22 @@
+# 'm' indicates a model which then follows this layout:
+# 'm OBJ_NAME X/Y/Z SX/SY/SZ TEXURE_NAME
+
+# Model names and Texture Names should be defined at the top of the file before any layout stuff.
+# and OBJ_NAME and TEXTURE_NAME reference the variable names given to those files.
+# 'file nameOfAModel ./path/to/file.obj' or
+# 'file nameOfATexture ./path/to/file.bmp'
+# Files can be anything as long as they are a spaceless path to a file. The name simply subtitutes
+# a string when being read by the code. The path is from the project root, not the place this
+# text file is.
+
+# EXAMPLE FILE LAYOUT
+
+file cube ./Models/cubeWithTextures.obj
+file brickTexture ./Textures/Brick256x256.bmp
+file ukFlagTexture ./Textures/test/ukFlag.bmp
+
+#Creates a cube at (10, 0, -20), scaled normally with a brick texture.
+m cube 10/0/-20 1/1/1 brickTexture
+
+#Creates a cube at (0, 0, 0) scaled by 2 on the y with a uk flag texture.
+m cube 0/0/0 1/2/1 ukFlagTexture
