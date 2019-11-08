@@ -42,6 +42,7 @@ void Main::DestroyGLWindow()
 void Main::PrepareToDraw()
 {
 	glClearColor(0, 92, 103, 255);
+
 	//View and Projection Matrices are computed in Camera class when it is constructed.
 	GLuint program = m_win32OpenGL.GetShaderProgram(); //Get the shader program.
 
@@ -133,7 +134,7 @@ void Main::Draw()
 *	other actions that need to occur every tick but aren't directly related to drawing.*/
 void Main::Update()
 {
-	scene.Update(); //Update the scene.
+	scene.Update();
 }
 
 /*! Receives input from InitProgram and carries out actions related to that input.
