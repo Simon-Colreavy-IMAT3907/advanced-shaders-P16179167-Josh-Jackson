@@ -193,3 +193,4 @@ Model ModelLoader::loadFromObj(const char * modelFilePath, string textureFilePat
 	return Model(finalVertices, finalTextureUVs, finalNormals, textureID); //could pass tex data as pointer/ref?
 }
 
+

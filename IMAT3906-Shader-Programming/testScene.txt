@@ -10,6 +10,9 @@ f archwayTexture ./Textures/archway_Base_Color.bmp
 f rock2 ./Models/rock_2.obj
 f stoneWallTexture ./Textures/stone_wall.bmp
 
+f house ./Models/house.obj
+f houseTexture ./Textures/house_spec.bmp
+
 m carparkTile 0/-1/0 1/1/1 0/0/0 grassTileTex
 m carparkTile 126/-1/0 1/1/1 0/0/0 grassTileTex
 m carparkTile 252/-1/0 1/1/1 0/0/0 grassTileTex
@@ -18,9 +21,15 @@ m carparkTile 0/-1/126 1/1/1 0/0/0 grassTileTex
 m carparkTile 126/-1/126 1/1/1 0/0/0 grassTileTex
 m carparkTile 252/-1/126 1/1/1 0/0/0 grassTileTex
 m carparkTile 378/-1/126 1/1/1 0/0/0 grassTileTex
+m carparkTile 504/-1/126 1/1/1 0/0/0 grassTileTex
+m carparkTile 630/-1/126 1/1/1 0/0/0 grassTileTex
+m carparkTile 504/-1/0 1/1/1 0/0/0 grassTileTex
+m carparkTile 630/-1/0 1/1/1 0/0/0 grassTileTex
 
 m rock1 0/16/0 1/1/1 0/0/0 rock1Texture
-
-m archway 190/0/0 0.3/0.3/0.3 0/0/0 archwayTexture
-
 m rock2 0/0/126 1/1/1 0/0/0 stoneWallTexture
+
+m house 262/0/40 0.2/0.2/0.2 0/0/0 houseTexture
+
+m archway 567/0/63 0.3/0.3/0.3 0/0/0 archwayTexture
+
