@@ -34,12 +34,11 @@ class Main
 	glm::vec3 m_lightColourSpecular{ 0.7f, 0.7f, 0.7f };
 	glm::vec3 m_lightColourDiffuse{ 0.8f, 0.8f, 0.8f };
 	glm::vec3 m_lightColourAmbient{ 0.7f, 0.6f, 0.6f };
-	glm::vec3 m_lightPosition{ 400.0f, 500.0f, 40.0f };
+	glm::vec3 m_lightPosition{ 0.0f, 0.0f, 0.0f };
 
 	float m_lightMovementSpeed = 20.0f;
 
 	Scene scene; //!< The scene that controls all of the models.
-
 public:
 	Main();
 	~Main();
