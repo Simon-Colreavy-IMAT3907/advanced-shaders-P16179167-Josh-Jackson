@@ -13,7 +13,6 @@ uniform vec3 light_colour_ambient;
 
 //GLSL Sampler to retrieves diffuseTexels from a texture
 uniform sampler2D diffuse_texture;
-
 uniform sampler2D specular_texture;
 
 //Surface Reflectance Vectors (Will be set by the relevant textures/diffuseTexels)
@@ -34,10 +33,10 @@ void main () {
 	vec4 specularTexel = texture(specular_texture, texture_coordinates);
 	
 	//Set the ambient and diffuse reflectance by the rgb values of the diffuseTexels
-	//this will, in the future, be set by specific textures for that purpose.
 	surface_ambient = diffuseTexel.rgb;
 	surface_diffuse = diffuseTexel.rgb;
 
+	//Set the specular reflectance by the rgb values of the specularTexels
 	surface_specular = specularTexel.rgb;
 
 
