@@ -11,15 +11,17 @@ uniform vec3 light_colour_specular;
 uniform vec3 light_colour_diffuse;
 uniform vec3 light_colour_ambient;
 
-//GLSL Sampler to retrieves texels from a texture
-uniform sampler2D basic_texture;
+//GLSL Sampler to retrieves diffuseTexels from a texture
+uniform sampler2D diffuse_texture;
 
-//Surface Reflectance Vectors (Will be set by the relevant textures/texels)
+uniform sampler2D specular_texture;
+
+//Surface Reflectance Vectors (Will be set by the relevant textures/diffuseTexels)
 vec3 surface_specular = vec3 (1.0, 1.0, 1.0); //Fully reflect specular light
 vec3 surface_ambient = vec3 (1.0, 1.0, 1.0); //Fully reflect ambient light
 vec3 surface_diffuse = vec3 (1.0, 1.0, 1.0); //Fully reflect diffuse light
 
-float specular_exponent = 60.0; //Specular Power
+float specular_exponent = 128.0; //Specular Power
 
 out vec4 fragment_colour; //Final colour of surface
 
@@ -27,13 +29,16 @@ void main () {
 
 	//--- GET TEXTURE INFORMATION ---
 
-	//Get the texels from our texture coordinates
-	vec4 texel = texture(basic_texture, texture_coordinates);
+	//Get the texels from our diffuse texture coordinates
+	vec4 diffuseTexel = texture(diffuse_texture, texture_coordinates);
+	vec4 specularTexel = texture(specular_texture, texture_coordinates);
 	
-	//Set the ambient and diffuse reflectance by the rgb values of the texels
+	//Set the ambient and diffuse reflectance by the rgb values of the diffuseTexels
 	//this will, in the future, be set by specific textures for that purpose.
-	surface_ambient = texel.rgb;
-	surface_diffuse = texel.rgb;
+	surface_ambient = diffuseTexel.rgb;
+	surface_diffuse = diffuseTexel.rgb;
+
+	surface_specular = specularTexel.rgb;
 
 
 	//--- CALCULATE AMBIENT INTENSITY ---
@@ -77,18 +82,23 @@ void main () {
 
 	//3. Calculate the angular distance between the reflection vector and the view direction
 	//and the closer the angle between them, the higher the intensity.
-	float dot_prod_specular = dot (reflection_eye, surface_to_viewer_eye);
-	dot_prod_specular = max (dot_prod_specular, 0.0);
+
+	// Phong
+	// float dot_prod_specular = dot (reflection_eye, surface_to_viewer_eye);
+	// dot_prod_specular = max (dot_prod_specular, 0.0);
+	// float specular_factor = pow (dot_prod_specular, specular_exponent);
+
+	// Blinn-Phong
+	//Instead of using a reflection vector blinn-phong uses a half-way vector which is a unit vector 
+	//that is exactly halfway between the view direction and the light direction. The closer the
+	//halfway vector aligns with the surface's normal vector, the highest the specular factor.
+	vec3 half_way_eye = normalize (surface_to_viewer_eye + direction_to_light_eye);
+	float dot_prod_specular = max (dot (half_way_eye, normal_eye), 0.0);
 	float specular_factor = pow (dot_prod_specular, specular_exponent);
 
 	//4. Calculate the final specular intensity by multiplying the light's specular colour
 	//with the specular colour of the surface and the specular strength (factor)
 	vec3 specular = light_colour_specular * surface_specular * specular_factor;
-	
-	// blinn 
-	//vec3 half_way_eye = normalize (surface_to_viewer_eye + direction_to_light_eye);
-	//float dot_prod_specular = max (dot (half_way_eye, normal_eye), 0.0);
-	//float specular_factor = pow (dot_prod_specular, specular_exponent);
 
 	
 	//Final colour of the fragment

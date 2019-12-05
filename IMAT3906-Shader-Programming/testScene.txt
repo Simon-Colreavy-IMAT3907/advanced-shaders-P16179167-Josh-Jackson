@@ -1,35 +1,42 @@
 f carparkTile ./Models/carpark_tile.obj
-f grassTileTex ./Textures/carpark_tile.bmp
+f carparkTileTex ./Textures/carpark_tile.bmp
 
 f rock1 ./Models/rock_1.obj
-f rock1Texture ./Textures/rock_1_Base_Color.bmp
+f rock1DiffuseTexture ./Textures/rock_1_diffuse.bmp
+f rock1SpecularTexture ./Textures/rock_1_specular.bmp
 
 f archway ./Models/archway.obj
-f archwayTexture ./Textures/archway_Base_Color.bmp
+f archwayDiffuseTexture ./Textures/archway_Diffuse.bmp
+f archwaySpecularTexture ./Textures/archway_Specular.bmp
+
 
 f rock2 ./Models/rock_2.obj
-f stoneWallTexture ./Textures/stone_wall.bmp
+f rock2DiffuseTexture ./Textures/rock2_diffuse.bmp
+f rock2SpecularTexture ./Textures/rock2_Specular.bmp
+
 
 f house ./Models/house.obj
-f houseTexture ./Textures/house_spec.bmp
+f houseDiffuseTexture ./Textures/house_diffuse.bmp
+f houseSpecularTexture ./Textures/house_spec.bmp
 
-m carparkTile 0/-1/0 1/1/1 0/0/0 grassTileTex
-m carparkTile 126/-1/0 1/1/1 0/0/0 grassTileTex
-m carparkTile 252/-1/0 1/1/1 0/0/0 grassTileTex
-m carparkTile 378/-1/0 1/1/1 0/0/0 grassTileTex
-m carparkTile 0/-1/126 1/1/1 0/0/0 grassTileTex
-m carparkTile 126/-1/126 1/1/1 0/0/0 grassTileTex
-m carparkTile 252/-1/126 1/1/1 0/0/0 grassTileTex
-m carparkTile 378/-1/126 1/1/1 0/0/0 grassTileTex
-m carparkTile 504/-1/126 1/1/1 0/0/0 grassTileTex
-m carparkTile 630/-1/126 1/1/1 0/0/0 grassTileTex
-m carparkTile 504/-1/0 1/1/1 0/0/0 grassTileTex
-m carparkTile 630/-1/0 1/1/1 0/0/0 grassTileTex
 
-m rock1 0/16/0 1/1/1 0/0/0 rock1Texture
-m rock2 0/0/126 1/1/1 0/0/0 stoneWallTexture
+m carparkTile 0/-1/0 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 126/-1/0 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 252/-1/0 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 378/-1/0 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 0/-1/126 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 126/-1/126 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 252/-1/126 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 378/-1/126 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 504/-1/126 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 630/-1/126 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 504/-1/0 1/1/1 0/0/0 carparkTileTex carparkTileTex
+m carparkTile 630/-1/0 1/1/1 0/0/0 carparkTileTex carparkTileTex
 
-m house 262/0/40 0.2/0.2/0.2 0/0/0 houseTexture
+m rock1 0/16/0 1/1/1 0/0/0 rock1DiffuseTexture rock1DiffuseTexture
+m rock2 0/0/126 1/1/1 0/0/0 rock2DiffuseTexture rock2SpecularTexture
 
-m archway 567/0/63 0.3/0.3/0.3 0/0/0 archwayTexture
+m house 262/0/40 0.2/0.2/0.2 0/0/0 houseDiffuseTexture houseSpecularTexture
+
+m archway 567/0/63 0.3/0.3/0.3 0/0/0 archwayDiffuseTexture archwaySpecularTexture
 

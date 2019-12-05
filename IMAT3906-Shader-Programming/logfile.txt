@@ -7626,3 +7626,270 @@ Creating shader: Shaders\phongTexture2.frag
 Shader compiled
 Program valid
 Program created
+Creating shader: Shaders\experimental.vert
+Shader compiled
+Creating shader: Shaders\experimental.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:26: 'normalize' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:25: '=' :  cannot convert from 'const highp float' to '3-component vector of highp float'
+
+
+
+Creating shader: Shaders\experimental.vert
+Shader compiled
+Creating shader: Shaders\experimental.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:26: 'normalize' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:25: '=' :  cannot convert from 'const highp float' to '3-component vector of highp float'
+
+
+
+Creating shader: Shaders\experimental.vert
+Shader compiled
+Creating shader: Shaders\experimental.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:26: 'normalize' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:25: '=' :  cannot convert from 'const highp float' to '3-component vector of highp float'
+
+
+
+Creating shader: Shaders\experimental.vert
+Shader compiled
+Creating shader: Shaders\experimental.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:26: 'normalize' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:25: '=' :  cannot convert from 'const highp float' to '3-component vector of highp float'
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:31: 'text' : undeclared identifier 
+ERROR: 0:31: 'rgb' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:31: '=' :  cannot convert from 'highp float' to '3-component vector of highp float'
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created

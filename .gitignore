@@ -321,3 +321,9 @@ ASALocalRun/
 
 # MSBuild Binary and Structured Log
 *.binlog
+
+
+IMAT3906-Shader-Programming/Textures/Currently_Unused_Textures
+
+IMAT3906-Shader-Programming/Textures/rock2_Specular.bmp
+IMAT3906-Shader-Programming/Textures/rock2_diffuse.bmp
