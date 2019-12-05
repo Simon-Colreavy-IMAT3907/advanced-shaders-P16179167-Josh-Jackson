@@ -129,13 +129,14 @@ void Scene::loadExternalScene(const char * filePath)
 			glm::vec3 rot;
 
 			char modelName[128];
-			char textureName[128];
+			char diffuseTextureName[128];
+			char specularTextureName[128];
 
-			int n = fscanf_s(file, "%s %f/%f/%f %f/%f/%f %f/%f/%f %s\n", &modelName, 128,
+			int n = fscanf_s(file, "%s %f/%f/%f %f/%f/%f %f/%f/%f %s %s\n", &modelName, 128,
 				&pos.x, &pos.y, &pos.z, &scale.x, &scale.y, &scale.z,
-				&rot.x, &rot.y, &rot.z, &textureName, 128);
+				&rot.x, &rot.y, &rot.z, &diffuseTextureName, 128, &specularTextureName, 128);
 
-			Model model = m_modelLoader.loadFromObj(fileNames.at(std::string(modelName)).c_str(), fileNames.at(std::string(textureName)));
+			Model model = m_modelLoader.loadFromObj(fileNames.at(std::string(modelName)).c_str(), fileNames.at(std::string(diffuseTextureName)), fileNames.at(std::string(specularTextureName)));
 			model.setPosition(pos.x, pos.y, pos.z);
 			model.setScaleFactor(scale.x, scale.y, scale.z);
 			model.setRotation(rot.x, rot.y, rot.z);

@@ -24,7 +24,9 @@ class Model
 	glm::vec3 m_postion; //!< The x,y,z position of this model.
 	glm::vec3 m_scaleFactor = glm::vec3(1.0f, 1.0f, 1.0f); //!< The scale factor of this model. 1 is default.
 
-	GLuint m_textureDataID; //!< Texture Identifier.
+	GLuint m_diffuseTextureDataID; //!< Texture Identifier.
+	GLuint m_specularTextureDataID; //!< Texture Identifier.
+
 
 	void loadModel();
 	void createVBO();
@@ -39,7 +41,7 @@ class Model
 	*	\param normals The vertex normals this model should use.
 	*	\param textureID The texture data identifier this model should reference.
 	*/
-	Model(std::vector<float> vertices, std::vector<float> textureUVs, std::vector<float> normals, GLuint textureID);
+	Model(std::vector<float> vertices, std::vector<float> textureUVs, std::vector<float> normals, GLuint diffuseTextureID, GLuint specularTextureID = -1);
 
 	/*! Sets the colour of this model when it is not textured.
 	*	\param r The amount of red.

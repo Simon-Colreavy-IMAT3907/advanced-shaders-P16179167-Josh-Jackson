@@ -7,13 +7,14 @@ Model::Model()
 	m_postion = glm::vec3(0, 0, 0);
 }
 
-Model::Model(std::vector<float> vertices, std::vector<float> textureUVs, std::vector<float> normals, GLuint textureID)
+Model::Model(std::vector<float> vertices, std::vector<float> textureUVs, std::vector<float> normals, GLuint diffuseTextureID, GLuint specularTextureID)
 {
 	m_fVertices = vertices;
 	m_fTextureUVs = textureUVs;
 	m_fNormals = normals;
 
-	m_textureDataID = textureID;
+	m_diffuseTextureDataID = diffuseTextureID;
+	m_specularTextureDataID = specularTextureID;
 
 	loadModel();
 }
@@ -93,8 +94,17 @@ their data to the shader using the same program.
 void Model::draw(GLuint &program)
 {
 	Win32OpenGL::SendUniformVector3ToShader(program, m_colour, "surface_colour"); //Let the shaders alter this colour.
+
+	//Bind diffuse texture map
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, m_diffuseTextureDataID);
+
+	if (m_specularTextureDataID != -1) {
+		//Bind specular texture map
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, m_specularTextureDataID);
+	}
 	
-	glBindTexture(GL_TEXTURE_2D, m_textureDataID);
 
 	m_modelMatrix = glm::mat4(1.0f); //Initialise model matrix as a 4x4 identity matrix.
 	
