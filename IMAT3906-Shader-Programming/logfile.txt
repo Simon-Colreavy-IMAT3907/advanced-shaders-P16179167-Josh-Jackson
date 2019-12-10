@@ -7905,3 +7905,247 @@ Creating shader: Shaders\phong.frag
 Shader compiled
 Program valid
 Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:89: '==' : wrong operand types no operation '==' exists that takes a left-hand operand of type 'uniform highp bool' and a right operand of type 'const int' (or there is no acceptable conversion)
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:89: '!=' : wrong operand types no operation '!=' exists that takes a left-hand operand of type 'uniform highp bool' and a right operand of type 'const int' (or there is no acceptable conversion)
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:89: '!=' : wrong operand types no operation '!=' exists that takes a left-hand operand of type 'uniform highp bool' and a right operand of type 'const int' (or there is no acceptable conversion)
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:56: 'assign' : l-value required "normal_eye" (cannot modify a varying)
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Error - could not link shader program
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+WARNING: 0:2: '' :  #version directive missing
+WARNING: 0:28: 'assign' : implicit type conversion allowed from GLSL 1.20 
+ERROR: 0:33: 'color' : undeclared identifier 
+ERROR: 0:33: 'assign' :  cannot convert from '4-component vector of highp float' to 'highp float'
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+WARNING: 0:2: '' :  #version directive missing
+WARNING: 0:28: 'assign' : implicit type conversion allowed from GLSL 1.20 
+ERROR: 0:33: 'fragment_color' : undeclared identifier 
+ERROR: 0:33: 'assign' :  cannot convert from '4-component vector of highp float' to 'highp float'
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+WARNING: 0:2: '' :  #version directive missing
+WARNING: 0:28: 'assign' : implicit type conversion allowed from GLSL 1.20 
+ERROR: 0:33: 'fragment_color' : undeclared identifier 
+ERROR: 0:33: 'assign' :  cannot convert from '4-component vector of highp float' to 'highp float'
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:26: 'normal_eye' : redefinition 
+ERROR: 0:54: 'assign' : l-value required "normal_eye" (cannot modify a varying)
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compilation failed
+Error in Vertex Shader
+ERROR: 0:18: 'tangent' : undeclared identifier 
+ERROR: 0:18: 'assign' :  cannot convert from 'highp float' to 'varying 3-component vector of highp float'
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Error - could not link shader program
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created

@@ -3,129 +3,121 @@
 
 Model::Model()
 {
-	m_rotation = glm::vec3(0, 0, 0);
-	m_postion = glm::vec3(0, 0, 0);
+	
 }
 
-Model::Model(std::vector<float> vertices, std::vector<float> textureUVs, std::vector<float> normals, GLuint diffuseTextureID, GLuint specularTextureID)
+Model::Model(char *path)
 {
-	m_fVertices = vertices;
-	m_fTextureUVs = textureUVs;
-	m_fNormals = normals;
-
-	m_diffuseTextureDataID = diffuseTextureID;
-	m_specularTextureDataID = specularTextureID;
-
-	loadModel();
+	loadModel(path);
 }
 
-void Model::createVBO()
+void Model::loadModel(std::string path)
 {
-	//*Create the Vertex Buffer Object (VBO)*/
-	glGenBuffers(1, &m_vboVertices);
-	glBindBuffer(GL_ARRAY_BUFFER, m_vboVertices);
-	glBufferData(GL_ARRAY_BUFFER, m_fVertices.size() * sizeof(float), &m_fVertices[0], GL_STATIC_DRAW);
+	Assimp::Importer importer;
+	const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
 
-	glGenBuffers(1, &m_vboTextureUVs);
-	glBindBuffer(GL_ARRAY_BUFFER, m_vboTextureUVs);
-	glBufferData(GL_ARRAY_BUFFER, m_fTextureUVs.size() * sizeof(float), &m_fTextureUVs[0], GL_STATIC_DRAW);
+	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
+		std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
+		return;
+	}
 
-	glGenBuffers(1, &m_vboNormals);
-	glBindBuffer(GL_ARRAY_BUFFER, m_vboNormals);
-	glBufferData(GL_ARRAY_BUFFER, m_fNormals.size() * sizeof(float), &m_fNormals[0], GL_STATIC_DRAW);
+	m_directory = path.substr(0, path.find_last_of('/'));
+	processNode(scene->mRootNode, scene);
 }
 
-void Model::createVAO()
-{
-	/*Create the Vertex Array Object (VAO)*/
-	glGenVertexArrays(1, &m_vao);
-	glBindVertexArray(m_vao);
+void Model::processNode(aiNode *node, const aiScene *scene) {
+	for (unsigned int i = 0; i < node->mNumMeshes; i++) {
+		aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
+		m_meshes.push_back(processMesh(mesh, scene));
+	}
 
-	glBindBuffer(GL_ARRAY_BUFFER, m_vboVertices);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
-
-	glBindBuffer(GL_ARRAY_BUFFER, m_vboNormals);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
-
-	glBindBuffer(GL_ARRAY_BUFFER, m_vboTextureUVs);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, NULL);
-
-	glEnableVertexAttribArray(0); //Vertices are element 0 in the VAO.
-	glEnableVertexAttribArray(1); //Textures are element 1 in the VAO.
-	glEnableVertexAttribArray(2); //Normals are element 2 in the VAO.
+	for (unsigned int i = 0; i < node->mNumChildren; i++) {
+		processNode(node->mChildren[i], scene);
+	}
 }
 
-/**Creates a VBO using the member vector m_vertices and then creates a VAO using that previously created VBO.*/
-void Model::loadModel()
-{
-	createVBO();
-	createVAO();
-}	 
+Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene) {
+	std::vector<Vertex> vertices;
+	std::vector<unsigned int> indices;
+	std::vector<Texture> textures;
 
-void Model::setColour(float r, float g, float b)
-{
-	m_colour = { r, g, b };
+	//Process Vertices
+	for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
+		Vertex vertex;
+
+		vertex.Position = glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
+		vertex.Normal = glm::vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
+
+		if (mesh->mTextureCoords[0]) {
+			vertex.TexCoords = glm::vec2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y);
+		}
+		else {
+			vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+		}
+
+		vertices.push_back(vertex);
+	}
+
+	//Process Indices
+	for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
+		aiFace face = mesh->mFaces[i];
+
+		for (unsigned int j = 0; j < face.mNumIndices; j++) {
+			indices.push_back(face.mIndices[j]);
+		}
+	}
+
+	//Process Material
+	if (mesh->mMaterialIndex >= 0)
+	{
+		aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
+
+		std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+
+		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+
+		std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+
+		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+	}
+
+	return Mesh(vertices, indices, textures);
 }
 
-void Model::setPosition(float x, float y, float z)
-{
-	m_postion = glm::vec3(x, y, z);
+std::vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName) {
+	std::vector<Texture> textures;
+
+	for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
+	{
+		aiString str;
+		mat->GetTexture(type, i, &str);
+
+		bool skip = false;
+
+		for (unsigned int j = 0; j < m_texturesLoaded.size(); j++) {
+			if (std::strcmp(m_texturesLoaded[j].path.data(), str.C_Str()) == 0)
+			{
+				textures.push_back(m_texturesLoaded[j]);
+				skip = true;
+				break;
+			}
+		}
+
+		if (!skip) {
+			Texture texture;
+			texture.id = m_textureLoader.Load(m_directory.append(str.C_Str()).c_str());
+			texture.type = typeName;
+			texture.path = str.C_Str();
+			textures.push_back(texture);
+		}
+	}
+
+	return textures;
 }
 
-/**Change the angle by which the model will be rotated every Model::draw() call.
-* The default sits at 0. Optional parameter degrees will take the angle[s] in
-* degrees instead of radians if true. False default.
-*/
-void Model::setRotation(float x, float y, float z)
-{
-	m_rotation = glm::vec3(x, y, z);
-}
-
-
-void Model::setScaleFactor(float x, float y, float z)
-{
-	m_scaleFactor = glm::vec3(x, y, z);
-}
-
-/*! Draws the model and performs any transformations as per the member variable values.
-* Takes a program parameter, taken as a reference to allow multiple models to send
-their data to the shader using the same program.
-*/
 void Model::draw(GLuint &program)
 {
-	Win32OpenGL::SendUniformVector3ToShader(program, m_colour, "surface_colour"); //Let the shaders alter this colour.
-
-	//Bind diffuse texture map
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, m_diffuseTextureDataID);
-
-	if (m_specularTextureDataID != -1) {
-		//Bind specular texture map
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, m_specularTextureDataID);
+	for (unsigned int i = 0; i < m_meshes.size(); i++) {
+		m_meshes[i].draw(program);
 	}
-	
-
-	m_modelMatrix = glm::mat4(1.0f); //Initialise model matrix as a 4x4 identity matrix.
-	
-
-	m_modelMatrix = glm::translate(m_modelMatrix, m_postion);
-	
-
-	/*Rotate the model matrix by the x, y and z Rot variables.*/
-	if (m_rotation.x > 0)m_modelMatrix = glm::rotate(m_modelMatrix, (float)glm::radians((float)m_rotation.x), glm::vec3(1, 0, 0));
-	
-	if (m_rotation.y > 0)m_modelMatrix = glm::rotate(m_modelMatrix, (float)glm::radians((float)m_rotation.y), glm::vec3(0, 1, 0));
-	
-	if (m_rotation.z > 0)m_modelMatrix = glm::rotate(m_modelMatrix, (float)glm::radians((float)m_rotation.z), glm::vec3(0, 0, 1));
-
-	m_modelMatrix = glm::scale(m_modelMatrix, m_scaleFactor);
-	
-	Win32OpenGL::SendUniformMatrixToShader(program, m_modelMatrix, "model_matrix"); //Send the model matrix to the shaders.
-	
-	glBindVertexArray(m_vao); //Bind VAO
-	GLuint numberOfElements = m_fVertices.size() / 3;
-	glDrawArrays(GL_TRIANGLES, 0, numberOfElements); //Draw VAO
-	glBindVertexArray(NULL); //Unbind VAO
-	glBindTexture(GL_TEXTURE_2D, NULL);
 }

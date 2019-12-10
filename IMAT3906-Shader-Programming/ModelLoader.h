@@ -5,6 +5,7 @@
 #pragma once
 #include "Model.h"
 #include "TextureLoader.h"
+#include <assimp/Importer.hpp>
 
 class ModelLoader
 {
@@ -30,6 +31,7 @@ private:
 	std::vector<float> finalVertices;
 	std::vector<float> finalTextureUVs;
 	std::vector<float> finalNormals;
+	std::vector<float> finalTangents;
 
 	TextureLoader textureLoader;
 
@@ -45,5 +47,5 @@ public:
 	*	and indexing the aforementioned values.
 	*\param filePath The filepath containing the OBJ file.
 	*/
-	Model loadFromObj(const char * modelFilePath, string diffuseTextureFilePath, string specularTextureFilePath = "");
+	Model loadFromObj(const char * modelFilePath, string diffuseTextureFilePath, string specularTextureFilePath = "", string normalTextureFilePath = "");
 };

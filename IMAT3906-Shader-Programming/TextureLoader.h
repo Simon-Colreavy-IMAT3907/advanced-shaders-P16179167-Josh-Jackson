@@ -9,4 +9,5 @@ class TextureLoader
 		~TextureLoader();
 
 		static int LoadBMP(const string location, GLuint &textureID, bool withMipMaps);
+		static GLuint Load(const char *location);
 };

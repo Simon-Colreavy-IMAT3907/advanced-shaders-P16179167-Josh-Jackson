@@ -105,6 +105,8 @@ void ModelLoader::parseFaceData(const char * line, FILE * file)
 				}
 			}
 
+			
+
 			/*Go through each vertex texure uv (vt) of each triangle.*/
 			for (unsigned int i = 0; i < textureUvIndex.size(); i++)
 			{
@@ -146,13 +148,14 @@ void ModelLoader::parseFaceData(const char * line, FILE * file)
 /*! Loads a model from an OBJ file.
 *\param filePath The filepath containing the OBJ file.
 */
-Model ModelLoader::loadFromObj(const char * modelFilePath, string diffuseTextureFilePath, string specularTextureFilePath)
+Model ModelLoader::loadFromObj(const char * modelFilePath, string diffuseTextureFilePath, string specularTextureFilePath, string normalTextureFilePath)
 {
 	/*Clear the previous model load if using the same instance of ModelLoader
 	for multiple models.*/
 	finalVertices.clear();
 	finalTextureUVs.clear();
 	finalNormals.clear();
+	finalTangents.clear();
 	unindexedNormals.clear();
 	unindexedUVs.clear();
 	unindexedVertices.clear();
@@ -183,6 +186,8 @@ Model ModelLoader::loadFromObj(const char * modelFilePath, string diffuseTexture
 		if (!parseVertexData(line, file))
 		{
 			parseFaceData(line, file);
+
+			
 		}
 	}
 
@@ -194,6 +199,12 @@ Model ModelLoader::loadFromObj(const char * modelFilePath, string diffuseTexture
 	if (specularTextureFilePath != "") {
 		GLuint specularTextureID;
 		textureLoader.LoadBMP(specularTextureFilePath, specularTextureID, false);
+
+		if (normalTextureFilePath != "") {
+			GLuint normalTextureID;
+			textureLoader.LoadBMP(normalTextureFilePath, normalTextureID, false);
+			return Model(finalVertices, finalTextureUVs, finalNormals, diffuseTextureID, specularTextureID, normalTextureID); //and specular id
+		}
 
 		return Model(finalVertices, finalTextureUVs, finalNormals, diffuseTextureID, specularTextureID); //and specular id
 	}

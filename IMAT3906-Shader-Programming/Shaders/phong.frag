@@ -1,11 +1,12 @@
 #version 410
 
 //These come from the vertex shader
-in vec3 position_eye, normal_eye;
+in vec3 position_eye;
 in vec2 texture_coordinates;
 
 //These are set as uniforms from the C++ code
 uniform mat4 view_matrix;
+uniform mat4 model_matrix;
 uniform vec3 light_position_world;
 uniform vec3 light_colour_specular;
 uniform vec3 light_colour_diffuse;
@@ -14,11 +15,15 @@ uniform vec3 light_colour_ambient;
 //GLSL Sampler to retrieves diffuseTexels from a texture
 uniform sampler2D diffuse_texture;
 uniform sampler2D specular_texture;
+uniform sampler2D normal_texture;
 
 //Surface Reflectance Vectors (Will be set by the relevant textures/diffuseTexels)
 vec3 surface_specular = vec3 (1.0, 1.0, 1.0); //Fully reflect specular light
 vec3 surface_ambient = vec3 (1.0, 1.0, 1.0); //Fully reflect ambient light
 vec3 surface_diffuse = vec3 (1.0, 1.0, 1.0); //Fully reflect diffuse light
+
+vec3 normal; //The actual normal
+vec3 normal_eye; //The normal as viewed from the camera's perspective.
 
 float specular_exponent = 128.0; //Specular Power
 
@@ -31,6 +36,7 @@ void main () {
 	//Get the texels from our diffuse texture coordinates
 	vec4 diffuseTexel = texture(diffuse_texture, texture_coordinates);
 	vec4 specularTexel = texture(specular_texture, texture_coordinates);
+	vec4 normalTexel = texture(normal_texture, texture_coordinates);
 	
 	//Set the ambient and diffuse reflectance by the rgb values of the diffuseTexels
 	surface_ambient = diffuseTexel.rgb;
@@ -38,6 +44,14 @@ void main () {
 
 	//Set the specular reflectance by the rgb values of the specularTexels
 	surface_specular = specularTexel.rgb;
+
+	//Set normals by the rgb values of the normalTexels.
+    normal = normalTexel.rgb;
+
+    //Transform normal vector to range [-1,1]
+    normal = normalize(normal * 2.0 - 1.0);  
+
+	normal_eye = vec3 (view_matrix * model_matrix * vec4 (normal, 0.0));
 
 
 	//--- CALCULATE AMBIENT INTENSITY ---

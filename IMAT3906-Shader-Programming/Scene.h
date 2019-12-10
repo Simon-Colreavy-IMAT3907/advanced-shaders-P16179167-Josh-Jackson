@@ -3,7 +3,6 @@
 */
 
 #pragma once
-#include "ModelLoader.h"
 #include "Model.h"
 #include "Camera.h"
 #include <map>
@@ -48,8 +47,6 @@ public:
 	*	in the scene.
 	*/
 	void Render(GLuint &program);
-
-	ModelLoader m_modelLoader;
 
 	Camera camera;
 

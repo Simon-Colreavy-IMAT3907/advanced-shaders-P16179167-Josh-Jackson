@@ -3,7 +3,6 @@
 
 Scene::Scene()
 {
-	m_modelLoader = ModelLoader();
 	camera = Camera(glm::vec3(0, 60, 280), glm::vec3(0, 0, 0));
 }
 Scene::~Scene()
@@ -91,58 +90,60 @@ void Scene::Render(GLuint &program)
 void Scene::loadExternalScene(const char * filePath)
 {
 	models = std::vector<Model>();
-	fileNames = std::map<std::string, std::string>();
+	//fileNames = std::map<std::string, std::string>();
 
-	FILE * file;
-	fopen_s(&file, filePath, "r"); //Open the file at filePath in read mode.
+	//FILE * file;
+	//fopen_s(&file, filePath, "r"); //Open the file at filePath in read mode.
 
-	if (file == NULL)
-	{
-		throw std::invalid_argument("Scene file doesn't exist.");
+	//if (file == NULL)
+	//{
+	//	throw std::invalid_argument("Scene file doesn't exist.");
+	//}
+
+	///*Read each line of the file until end of file is reached.*/
+	//while (1)
+	//{
+	//	char line[128]; //Assumes first word of a line isn't longer than 512 characters.
+
+	//	int res = fscanf_s(file, "%s", line, 128); //Read the first word of the line.
+
+	//	if (res == EOF) //If we've reached the end of the file, exit the loop.
+	//	{
+	//		break;
+	//	}
+
+	//	if (strcmp(line, "f") == 0) //A file reference has been found.
+	//	{
+	//		char name[128];
+	//		char path[128];
+
+	//		fscanf_s(file, "%s %s\n", &name, 128, &path, 128);
+
+	//		fileNames.insert(std::pair<string, string>(std::string(name), std::string(path)));
+	//	}
+	//	else if (strcmp(line, "m") == 0)
+	//	{
+	//		glm::vec3 pos;
+	//		glm::vec3 scale;
+	//		glm::vec3 rot;
+
+	//		char modelName[128];
+	//		char diffuseTextureName[128];
+	//		char specularTextureName[128];
+	//		char normalTextureName[128];
+
+	//		int n = fscanf_s(file, "%s %f/%f/%f %f/%f/%f %f/%f/%f %s %s %s\n", &modelName, 128,
+	//			&pos.x, &pos.y, &pos.z, &scale.x, &scale.y, &scale.z,
+	//			&rot.x, &rot.y, &rot.z, &diffuseTextureName, 128, &specularTextureName, 128, &normalTextureName, 128);
+
+	//		Model model = m_modelLoader.loadFromObj(fileNames.at(std::string(modelName)).c_str(), fileNames.at(std::string(diffuseTextureName)), fileNames.at(std::string(specularTextureName)), fileNames.at(std::string(normalTextureName)));
+	//		model.setPosition(pos.x, pos.y, pos.z);
+	//		model.setScaleFactor(scale.x, scale.y, scale.z);
+	//		model.setRotation(rot.x, rot.y, rot.z);
+
+	//		models.push_back(model);
+	//		
+	//	}
+
+	models.push_back(Model("./Models/house.obj"));
 	}
-
-	/*Read each line of the file until end of file is reached.*/
-	while (1)
-	{
-		char line[128]; //Assumes first word of a line isn't longer than 512 characters.
-
-		int res = fscanf_s(file, "%s", line, 128); //Read the first word of the line.
-
-		if (res == EOF) //If we've reached the end of the file, exit the loop.
-		{
-			break;
-		}
-
-		if (strcmp(line, "f") == 0) //A file reference has been found.
-		{
-			char name[128];
-			char path[128];
-
-			fscanf_s(file, "%s %s\n", &name, 128, &path, 128);
-
-			fileNames.insert(std::pair<string, string>(std::string(name), std::string(path)));
-		}
-		else if (strcmp(line, "m") == 0)
-		{
-			glm::vec3 pos;
-			glm::vec3 scale;
-			glm::vec3 rot;
-
-			char modelName[128];
-			char diffuseTextureName[128];
-			char specularTextureName[128];
-
-			int n = fscanf_s(file, "%s %f/%f/%f %f/%f/%f %f/%f/%f %s %s\n", &modelName, 128,
-				&pos.x, &pos.y, &pos.z, &scale.x, &scale.y, &scale.z,
-				&rot.x, &rot.y, &rot.z, &diffuseTextureName, 128, &specularTextureName, 128);
-
-			Model model = m_modelLoader.loadFromObj(fileNames.at(std::string(modelName)).c_str(), fileNames.at(std::string(diffuseTextureName)), fileNames.at(std::string(specularTextureName)));
-			model.setPosition(pos.x, pos.y, pos.z);
-			model.setScaleFactor(scale.x, scale.y, scale.z);
-			model.setRotation(rot.x, rot.y, rot.z);
-
-			models.push_back(model);
-			
-		}
-	}
-}

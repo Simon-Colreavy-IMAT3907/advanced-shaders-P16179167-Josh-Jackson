@@ -114,6 +114,8 @@ void Main::PrepareToDraw()
 	Win32OpenGL::SendUniformVector3ToShader(program, m_lightColourDiffuse, "light_colour_diffuse");
 	Win32OpenGL::SendUniformVector3ToShader(program, m_lightColourAmbient, "light_colour_ambient");
 
+	Win32OpenGL::SendUniformFloatToShader(program, 1, "useNormalMaps");
+
 	scene.Start(); //Start the Scene.
 }
 
@@ -149,6 +151,16 @@ void Main::HandleInput(unsigned char virtualKeyCode)
 void Main::MoveLightPosition(unsigned char key)
 {
 	bool keyHasBeenPressed = false;
+
+	if (key == 0x4E) {
+		GLuint program = m_win32OpenGL.GetShaderProgram(); //Get the shader program.
+		Win32OpenGL::SendUniformFloatToShader(program, 1, "useNormalMaps");
+	}
+
+	if (key == 0x4D) {
+		GLuint program = m_win32OpenGL.GetShaderProgram(); //Get the shader program.
+		Win32OpenGL::SendUniformFloatToShader(program, 0, "useNormalMaps");
+	}
 
 	if (key == 0x25) //Left Arrow
 	{
@@ -193,5 +205,6 @@ void Main::Resize(HDC hdc, RECT rect)
 	scene.camera.m_aspectRatio = (float)rect.right / rect.bottom;
 	scene.camera.computeProjectionMatrix();
 	GLuint program = m_win32OpenGL.GetShaderProgram();
+
 	Win32OpenGL::SendUniformMatrixToShader(program, scene.camera.projectionMatrix, "projection_matrix");
 }
