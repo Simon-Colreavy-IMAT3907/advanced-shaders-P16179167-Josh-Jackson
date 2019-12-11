@@ -38,8 +38,6 @@ void Scene::keyIsPressed(unsigned char key)
 	{
 		camera.move(Direction::right, m_cameraMovementSpeed);
 	}
-
-
 }
 
 /*! Called via Main when the mouse is moved. Receives the change

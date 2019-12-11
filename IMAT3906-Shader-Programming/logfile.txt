@@ -8779,3 +8779,45 @@ Creating shader: Shaders\phong.frag
 Shader compiled
 Program valid
 Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created

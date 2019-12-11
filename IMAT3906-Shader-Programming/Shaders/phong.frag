@@ -29,7 +29,7 @@ vec3 surface_diffuse = vec3 (1.0, 1.0, 1.0); //Fully reflect diffuse light
 vec3 normal; //The actual normal
 vec3 normal_eye; //The normal as viewed from the camera's perspective.
 
-float specular_exponent = 448.0; //Specular Power
+float specular_exponent = 32.0; //Specular Power
 
 out vec4 fragment_colour; //Final colour of surface
 
@@ -37,7 +37,7 @@ void main () {
 
 	//--- GET TEXTURE INFORMATION ---
 
-	//Get the texels from our diffuse texture coordinates
+	//Get the texels from our texture coordinates
 	vec4 diffuseTexel = texture(diffuse_texture, texture_coordinates);
 	vec4 specularTexel = texture(specular_texture, texture_coordinates);
 	vec4 normalTexel = texture(normal_texture, texture_coordinates);
