@@ -19,7 +19,7 @@ void Main::CreateGLWindow(HWND hWnd, RECT rect)
 
 	scene.camera.m_aspectRatio = static_cast<float>(rect.right / rect.bottom); //Sets up the aspect ratio.
 
-	m_win32OpenGL.CreateShadersAndProgram("phong"); //Setup the shader program with the given shader file[s].
+	m_win32OpenGL.CreateShadersAndProgram("BlinnPhong"); //Setup the shader program with the given shader file[s].
 
 	m_win32OpenGL.SetupDisplay();
 

@@ -1,6 +1,7 @@
 f floor ./Models/floor.obj
 f rock1 ./Models/Rock_1.obj
 f cube ./Models/cube.obj
+f cube2 ./Models/cube2.obj
 
 
 
@@ -13,7 +14,7 @@ m cube 0/18/0 1/1/1 0/0/0 triangles
 m cube 126/18/0 1/1/1 0/0/0 wireframe
 
 m rock1 252/18/0 1/1/1 0/0/0 triangles
-m rock1 378/18/0 1/1/1 0/0/0 wireframe
+m cube2 378/18/0 1/1/1 0/0/0 triangles
 
 
 

@@ -107,7 +107,7 @@ void main () {
 	//3. Calculate the angular distance between the reflection vector and the view direction
 	//and the closer the angle between them, the higher the intensity.
 
-	// Phong
+	// Phong Shading
 	// float dot_prod_specular = dot (reflection_eye, surface_to_viewer_eye);
 	// dot_prod_specular = max (dot_prod_specular, 0.0);
 	// float specular_factor = pow (dot_prod_specular, specular_exponent);
@@ -124,7 +124,7 @@ void main () {
 	//with the specular colour of the surface and the specular strength (factor)
 	vec3 specular = light_colour_specular * surface_specular * specular_factor;
 
-	
+
 	//Final colour of the fragment
 	fragment_colour = vec4 (ambient + diffuse + specular, 1.0);
 }

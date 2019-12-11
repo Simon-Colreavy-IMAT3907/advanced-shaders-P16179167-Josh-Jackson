@@ -8821,3 +8821,115 @@ Creating shader: Shaders\phong.frag
 Shader compiled
 Program valid
 Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:39: '=' :  cannot convert from 'highp float' to '2-component vector of highp float'
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:129: '=' :  cannot convert from '3-component vector of highp float' to 'highp float'
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:129: '=' :  cannot convert from '3-component vector of highp float' to 'highp float'
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:129: '=' :  cannot convert from '3-component vector of highp float' to 'highp float'
+ERROR: 0:132: 'constructor' : not enough data provided for construction 
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:132: 'diffuseLevel' : undeclared identifier 
+ERROR: 0:132: 'specularLevel' : undeclared identifier 
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compilation failed
+Error in Fragment Shader
+ERROR: 0:127: 'useCellShading' : undeclared identifier 
+ERROR: 0:136: 'diffuseLevel' : undeclared identifier 
+ERROR: 0:136: 'specularLevel' : undeclared identifier 
+
+
+
+Creating shader: Shaders\phong.vert
+Shader compiled
+Creating shader: Shaders\phong.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phongv2.vert
+Shader compiled
+Creating shader: Shaders\phongv2.frag
+Shader compiled
+Program valid
+Program created
+Creating shader: Shaders\phongv2.vert
+Shader compiled
+Creating shader: Shaders\phongv2.frag
+Shader compiled
+Program valid
+Program created

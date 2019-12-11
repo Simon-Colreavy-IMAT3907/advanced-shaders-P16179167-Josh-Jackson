@@ -9,5 +9,7 @@ newmtl cube
   Kd 0.5880 0.5880 0.5880
   Ks 0.0000 0.0000 0.0000
   Ke 0.0000 0.0000 0.0000
-  map_Ka brickwall_diffuse.jpg
-  map_Kd brickwall_diffuse.jpg
+  map_Ka cube2_diffuse.jpg
+  map_Kd cube2_diffuse.jpg
+  map_Kn cube2_normal.jpg
+  map_bump cube2_displacement.jpg

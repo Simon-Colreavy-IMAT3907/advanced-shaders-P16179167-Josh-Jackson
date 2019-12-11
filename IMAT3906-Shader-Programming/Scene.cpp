@@ -82,6 +82,7 @@ void Scene::Render(GLuint &program)
 	
 	//Send the camera's view matrix to the shader.
 	Win32OpenGL::SendUniformMatrixToShader(program, camera.viewMatrix, "view_matrix");
+	Win32OpenGL::SendUniformVector3ToShader(program, camera.getCameraPos(), "viewPos");
 }
 
 
