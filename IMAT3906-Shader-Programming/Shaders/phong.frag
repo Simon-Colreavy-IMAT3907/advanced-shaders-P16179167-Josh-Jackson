@@ -2,7 +2,9 @@
 
 //These come from the vertex shader
 in vec3 position_eye;
+in vec3 vertex_normal_passed;
 in vec2 texture_coordinates;
+in mat3 TBNMatrix;
 
 //These are set as uniforms from the C++ code
 uniform mat4 view_matrix;
@@ -17,6 +19,8 @@ uniform sampler2D diffuse_texture;
 uniform sampler2D specular_texture;
 uniform sampler2D normal_texture;
 
+uniform float useNormalMaps;
+
 //Surface Reflectance Vectors (Will be set by the relevant textures/diffuseTexels)
 vec3 surface_specular = vec3 (1.0, 1.0, 1.0); //Fully reflect specular light
 vec3 surface_ambient = vec3 (1.0, 1.0, 1.0); //Fully reflect ambient light
@@ -25,7 +29,7 @@ vec3 surface_diffuse = vec3 (1.0, 1.0, 1.0); //Fully reflect diffuse light
 vec3 normal; //The actual normal
 vec3 normal_eye; //The normal as viewed from the camera's perspective.
 
-float specular_exponent = 128.0; //Specular Power
+float specular_exponent = 448.0; //Specular Power
 
 out vec4 fragment_colour; //Final colour of surface
 
@@ -49,9 +53,16 @@ void main () {
     normal = normalTexel.rgb;
 
     //Transform normal vector to range [-1,1]
-    normal = normalize(normal * 2.0 - 1.0);  
+    normal = normalize(normal * 2.0 - 1.0);
 
-	normal_eye = vec3 (view_matrix * model_matrix * vec4 (normal, 0.0));
+	//Convert the normal from tangent space to world space.
+	normal = normalize(TBNMatrix * normal);
+
+	normal_eye = vec3 (view_matrix * model_matrix * vec4 (vertex_normal_passed, 0.0));
+
+	if (useNormalMaps != 0) {
+		normal_eye = vec3 (view_matrix * model_matrix * vec4 (normal, 0.0));
+	}
 
 
 	//--- CALCULATE AMBIENT INTENSITY ---

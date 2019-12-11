@@ -25,7 +25,6 @@ void Main::CreateGLWindow(HWND hWnd, RECT rect)
 
 	glEnable(GL_BLEND);
 
-
 	m_win32OpenGL.GetError(); //Checks everything is ok.
 }
 
@@ -41,7 +40,7 @@ void Main::DestroyGLWindow()
 */
 void Main::PrepareToDraw()
 {
-	glClearColor(0, 92, 103, 255);
+	glClearColor(30 / 255.0f, 39 / 255.0f, 46 / 255.0f, 255);
 
 	//View and Projection Matrices are computed in Camera class when it is constructed.
 	GLuint program = m_win32OpenGL.GetShaderProgram(); //Get the shader program.
@@ -183,6 +182,16 @@ void Main::MoveLightPosition(unsigned char key)
 	if (key == 0x28) //Down Arrow
 	{
 		m_lightPosition = glm::vec3{ m_lightPosition.x, m_lightPosition.y - m_lightMovementSpeed, m_lightPosition.z };
+		keyHasBeenPressed = true;
+	}
+
+	if (key == 0x47) {
+		m_lightPosition = glm::vec3{ m_lightPosition.x, m_lightPosition.y, m_lightPosition.z - m_lightMovementSpeed };
+		keyHasBeenPressed = true;
+	}
+
+	if (key == 0x4A) {
+		m_lightPosition = glm::vec3{ m_lightPosition.x, m_lightPosition.y, m_lightPosition.z + m_lightMovementSpeed };
 		keyHasBeenPressed = true;
 	}
 

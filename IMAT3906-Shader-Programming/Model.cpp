@@ -6,15 +6,16 @@ Model::Model()
 	
 }
 
-Model::Model(char *path)
+Model::Model(const char *path, glm::vec3 pos, glm::vec3 scale, glm::vec3 rot, std::string drawType)
 {
-	loadModel(path);
+	m_drawType = drawType;
+	loadModel(path, pos, scale, rot);
 }
 
-void Model::loadModel(std::string path)
+void Model::loadModel(std::string path, glm::vec3 pos, glm::vec3 scale, glm::vec3 rot)
 {
 	Assimp::Importer importer;
-	const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+	const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
 	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
 		std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
@@ -22,21 +23,21 @@ void Model::loadModel(std::string path)
 	}
 
 	m_directory = path.substr(0, path.find_last_of('/'));
-	processNode(scene->mRootNode, scene);
+	processNode(scene->mRootNode, scene, pos, scale, rot);
 }
 
-void Model::processNode(aiNode *node, const aiScene *scene) {
+void Model::processNode(aiNode *node, const aiScene *scene, glm::vec3 pos, glm::vec3 scale, glm::vec3 rot) {
 	for (unsigned int i = 0; i < node->mNumMeshes; i++) {
 		aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-		m_meshes.push_back(processMesh(mesh, scene));
+		m_meshes.push_back(processMesh(mesh, scene, pos, scale, rot));
 	}
 
 	for (unsigned int i = 0; i < node->mNumChildren; i++) {
-		processNode(node->mChildren[i], scene);
+		processNode(node->mChildren[i], scene, pos, scale, rot);
 	}
 }
 
-Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene) {
+Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene, glm::vec3 pos, glm::vec3 scale, glm::vec3 rot) {
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
@@ -47,6 +48,7 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene) {
 
 		vertex.Position = glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
 		vertex.Normal = glm::vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
+		vertex.Tangent = glm::vec3(mesh->mTangents[i].x, mesh->mTangents[i].y, mesh->mTangents[i].z);
 
 		if (mesh->mTextureCoords[0]) {
 			vertex.TexCoords = glm::vec2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y);
@@ -77,15 +79,21 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene) {
 		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
 		std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
-
+		
 		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+
+		std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_NORMALS, "texture_normal");
+
+		textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
 	}
 
-	return Mesh(vertices, indices, textures);
+	return Mesh(vertices, indices, textures, pos, scale, rot);
 }
 
 std::vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName) {
 	std::vector<Texture> textures;
+
+	unsigned int test = mat->GetTextureCount(type);
 
 	for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
 	{
@@ -105,7 +113,7 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType 
 
 		if (!skip) {
 			Texture texture;
-			texture.id = m_textureLoader.Load(m_directory.append(str.C_Str()).c_str());
+			texture.id = m_textureLoader.Load(m_directory.append("/").append(str.C_Str()).c_str());
 			texture.type = typeName;
 			texture.path = str.C_Str();
 			textures.push_back(texture);
@@ -118,6 +126,6 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType 
 void Model::draw(GLuint &program)
 {
 	for (unsigned int i = 0; i < m_meshes.size(); i++) {
-		m_meshes[i].draw(program);
+		m_meshes[i].draw(program, m_drawType);
 	}
 }

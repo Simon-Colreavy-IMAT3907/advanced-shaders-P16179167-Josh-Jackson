@@ -16,22 +16,23 @@ class Model
 public:
 	Model();
 
-	Model(char *path);
+	Model(const char *path, glm::vec3 pos, glm::vec3 scale, glm::vec3 rot, std::string drawType);
 
 	void draw(GLuint &program);
 
 	glm::mat4 m_modelMatrix;
 
 private:
+	std::string m_drawType;
 	TextureLoader m_textureLoader = TextureLoader();
 	std::vector<Texture> m_texturesLoaded;
 
-	void loadModel(std::string path);
+	void loadModel(std::string path, glm::vec3 pos, glm::vec3 scale, glm::vec3 rot);
 
 	std::vector<Mesh> m_meshes;
 	std::string m_directory;
 
-	void processNode(aiNode *node, const aiScene *scene);
-	Mesh processMesh(aiMesh *mesh, const aiScene *scene);
+	void processNode(aiNode *node, const aiScene *scene, glm::vec3 pos, glm::vec3 scale, glm::vec3 rot);
+	Mesh processMesh(aiMesh *mesh, const aiScene *scene, glm::vec3 pos, glm::vec3 scale, glm::vec3 rot);
 	std::vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName);
 };

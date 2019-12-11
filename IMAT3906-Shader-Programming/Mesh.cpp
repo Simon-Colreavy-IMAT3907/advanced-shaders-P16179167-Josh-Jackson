@@ -1,10 +1,12 @@
 #include "Mesh.h";
 
-Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures) {
+Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures, glm::vec3 pos, glm::vec3 scale, glm::vec3 rot) {
 	m_vertices = vertices;
 	m_indices = indices;
 	m_textures = textures;
-
+	m_pos = pos;
+	m_scale = scale;
+	m_rot = rot;
 	setupMesh();
 }
 
@@ -32,10 +34,13 @@ void Mesh::setupMesh() {
 	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, TexCoords));
 
+	glEnableVertexAttribArray(3);
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Tangent));
+
 	glBindVertexArray(0);
 }
 
-void Mesh::draw(GLuint &program) {
+void Mesh::draw(GLuint &program, std::string drawType) {
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
 
@@ -44,19 +49,30 @@ void Mesh::draw(GLuint &program) {
 
 		std::string number;
 		std::string name = m_textures[i].type;
-		if (name == "texture_diffuse") {
-			number = std::to_string(diffuseNr++);
-		}
-		else if (name == "texture_specular") {
-			number = std::to_string(specularNr++);
-		}
 
 		glBindTexture(GL_TEXTURE_2D, m_textures[i].id);
 	}
 
 	glActiveTexture(GL_TEXTURE0);
 
+	glm::mat4 modelMatrix = glm::mat4(1.0f); //Initialise model matrix as a 4x4 identity matrix.
+
+
+	modelMatrix = glm::translate(modelMatrix, m_pos);
+
+	modelMatrix = glm::scale(modelMatrix, m_scale);
+
+	Win32OpenGL::SendUniformMatrixToShader(program, modelMatrix, "model_matrix"); //Send the model matrix to the shaders.
+
 	glBindVertexArray(m_vao);
-	glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
+
+	if (drawType == "wireframe") {
+		glDrawElements(GL_LINE_STRIP, m_indices.size(), GL_UNSIGNED_INT, 0);
+	}
+	else {
+		glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
+	}
+
 	glBindVertexArray(0);
+	glBindTexture(GL_TEXTURE_2D, NULL);
 }
