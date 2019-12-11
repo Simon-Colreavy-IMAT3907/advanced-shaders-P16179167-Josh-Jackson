@@ -85,6 +85,10 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene, glm::vec3 pos, glm::
 		std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_NORMALS, "texture_normal");
 
 		textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+
+		std::vector<Texture> depthMaps = loadMaterialTextures(material, aiTextureType_DISPLACEMENT, "texture_depth");
+
+		textures.insert(textures.end(), depthMaps.begin(), depthMaps.end());
 	}
 
 	return Mesh(vertices, indices, textures, pos, scale, rot);

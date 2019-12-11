@@ -13,14 +13,36 @@ in vec3 vertexNormal;
 //Textures setup in Model class
 uniform sampler2D diffuseMap;
 uniform sampler2D normalMap;
+uniform sampler2D depthMap;
 
 uniform vec3 light_position_world;
 uniform vec3 viewPos;
 uniform float useNormalMaps;
+uniform float useDisplacementMaps;
 
 float specularExponent = 32.0;
 
+vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir) {
+    float height = texture(depthMap, texCoords).r;
+    return texCoords - viewDir.xy * (height * 0.3);
+}
+
 void main() {
+
+    //Parallax Mapping
+    vec3 viewDir = normalize(TangentViewPos - TangentFragPos);
+
+
+    vec2 texCoords = TexCoords;
+
+    if (useDisplacementMaps == 1) {
+        texCoords = ParallaxMapping(TexCoords, viewDir);
+        if (texCoords.x > 1.0 || texCoords.y > 1.0 || texCoords.x < 0.0 || texCoords.y < 0.0) {
+            discard;
+        }
+    }
+    
+
     //Normals
     //1.Get normal rgb values from the texture file or from the vertex
     //  shader if useNormalMaps is set to false.
@@ -28,16 +50,15 @@ void main() {
     vec3 normal;
 
     if (useNormalMaps == 1) {
-        normal = texture(normalMap, TexCoords).rgb;
+        normal = texture(normalMap, texCoords).rgb;
         normal = normalize(normal * 2.0 - 1.0);
     }
     else {
         normal = vertexNormal;
     }
 
-
     //Diffuse Lighting Colour
-    vec3 diffuseColor = texture(diffuseMap, TexCoords).rgb;
+    vec3 diffuseColor = texture(diffuseMap, texCoords).rgb;
     
     //Ambient Lighting, general lighting based on diffuse lighting colour
     vec3 ambient = 0.1 * diffuseColor;
@@ -64,7 +85,6 @@ void main() {
 	//halfway vector aligns with the surface's normal vector, the highest the specular factor.
     //4. Calculate the final specular intensity by multiplying the light's specular colour
 	//with the specular colour of the surface and the specular strength (factor)
-    vec3 viewDir = normalize(TangentViewPos - TangentFragPos);
     vec3 reflectDir = reflect(-lightDir, normal);
     vec3 halfwayDir = normalize(lightDir + viewDir);
     float specularFactor = pow(max(dot(normal, halfwayDir), 0.0), specularExponent);

@@ -12,3 +12,4 @@ newmtl cube
   map_Ka brickwall_diffuse.jpg
   map_Kd brickwall_diffuse.jpg
   map_Kn brickwall_normal.jpg
+  disp brickwall_diffuse.jpg

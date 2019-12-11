@@ -17,3 +17,5 @@ map_Ks Rock_1_Specular.jpg
 
 map_bump Rock_1_Normal.jpg
 bump Rock_1_Normal.jpg 
+
+disp Rock_1_Base_Color.jpg

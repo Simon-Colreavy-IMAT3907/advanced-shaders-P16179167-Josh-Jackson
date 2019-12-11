@@ -114,6 +114,8 @@ void Main::PrepareToDraw()
 	Win32OpenGL::SendUniformVector3ToShader(program, m_lightColourAmbient, "light_colour_ambient");
 
 	Win32OpenGL::SendUniformFloatToShader(program, 1, "useNormalMaps");
+	Win32OpenGL::SendUniformFloatToShader(program, 0, "useDisplacementMaps");
+
 
 	scene.Start(); //Start the Scene.
 }
@@ -159,6 +161,17 @@ void Main::MoveLightPosition(unsigned char key)
 	if (key == 0x4D) {
 		GLuint program = m_win32OpenGL.GetShaderProgram(); //Get the shader program.
 		Win32OpenGL::SendUniformFloatToShader(program, 0, "useNormalMaps");
+	}
+
+	if (key == 0x42) {
+		GLuint program = m_win32OpenGL.GetShaderProgram(); //Get the shader program.
+		Win32OpenGL::SendUniformFloatToShader(program, 1, "useDisplacementMaps");
+	}
+
+	if (key == 0x56) {
+		GLuint program = m_win32OpenGL.GetShaderProgram(); //Get the shader program.
+		Win32OpenGL::SendUniformFloatToShader(program, 0, "useDisplacementMaps");
+
 	}
 
 	if (key == 0x25) //Left Arrow
