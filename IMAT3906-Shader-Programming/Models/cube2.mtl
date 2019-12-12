@@ -12,5 +12,5 @@ newmtl cube
   map_Ka cube2_diffuse.jpg
   map_Kd cube2_diffuse.jpg
   map_Kn cube2_normal.jpg
-  disp cube2_displacement.jpg
+  disp cube2heightmap.jpg
   

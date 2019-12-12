@@ -9212,3 +9212,9 @@ Creating shader: Shaders\BlinnPhong.frag
 Shader compiled
 Program valid
 Program created
+Creating shader: Shaders\BlinnPhong.vert
+Shader compiled
+Creating shader: Shaders\BlinnPhong.frag
+Shader compiled
+Program valid
+Program created
